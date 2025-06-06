@@ -1,0 +1,18 @@
+@import 'tailwindcss';
+@import './token/index.css';
+@import './fonts.css';
+
+@layer base {
+  *,
+  ::after,
+  ::before,
+  ::backdrop,
+  ::file-selector-button {
+    border-color: var(--color-border-base, currentColor);
+  }
+}
+
+body {
+  color: var(--color-text-base);
+  background: var(--color-bg-light);
+}

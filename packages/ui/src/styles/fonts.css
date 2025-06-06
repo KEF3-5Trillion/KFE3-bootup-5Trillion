@@ -1,0 +1,73 @@
+@import 'tailwindcss';
+
+@utility font-style-headline-h1 {
+  font-size: 40px;
+  line-height: 48px;
+  font-weight: 700;
+}
+
+@utility font-style-headline-h2 {
+  font-size: 32px;
+  line-height: 38px;
+  font-weight: 700;
+}
+
+@utility font-style-headline-h3 {
+  font-size: 24px;
+  line-height: 24px;
+  font-weight: 700;
+}
+
+@utility font-style-headline-h4 {
+  font-size: 20px;
+  line-height: 20px;
+  font-weight: 700;
+}
+
+@utility font-style-headline-h5 {
+  font-size: 16px;
+  line-height: 20px;
+  font-weight: 700;
+}
+
+@utility font-style-headline-h6 {
+  font-size: 14px;
+  line-height: normal;
+  font-weight: 700;
+}
+
+@utility font-style-extra-large {
+  font-size: 18px;
+  line-height: 100%;
+  font-weight: 700;
+}
+
+@utility font-style-large {
+  font-size: 16px;
+  line-height: 22px;
+  font-weight: 700;
+}
+
+@utility font-style-medium {
+  font-size: 14px;
+  line-height: 22px;
+  font-weight: 700;
+}
+
+@utility font-style-small {
+  font-size: 12px;
+  line-height: 20px;
+  font-weight: 700;
+}
+
+@utility font-style-extra-small {
+  font-size: 10px;
+  line-height: 100%;
+  font-weight: 700;
+}
+
+@utility font-style-tiny {
+  font-size: 8px;
+  line-height: 100%;
+  font-weight: 700;
+}
