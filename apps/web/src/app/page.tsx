@@ -1,12 +1,12 @@
 'use client';
 
-import { Test } from '@ui/components/Test/Test';
+import { TestButton } from '@ui/components';
 
 export default function Page() {
   return (
     <div>
       <h1>Hello from Web</h1>
-      <Test></Test>
+      <TestButton>Test Button</TestButton>
     </div>
   );
 }
