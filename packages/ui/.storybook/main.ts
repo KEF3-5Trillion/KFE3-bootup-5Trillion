@@ -12,6 +12,17 @@ const config: StorybookConfig = {
   "framework": {
     "name": "@storybook/react-vite",
     "options": {}
-  }
+  },
+  viteFinal: async (config) => {
+    config.css = {
+      postcss: {
+        plugins: [
+          require('@tailwindcss/postcss'), // 루트 레벨에서 Tailwind CSS를 사용하기 위한 설정
+        ],
+      },
+    };
+    return config;
+  },
 };
+
 export default config;
