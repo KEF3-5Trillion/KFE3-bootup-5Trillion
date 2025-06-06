@@ -16,6 +16,16 @@ export default [
           jsx: true,
         },
       },
+      globals: {
+        window: 'readonly',
+        document: 'readonly',
+        HTMLElement: 'readonly',
+        HTMLDivElement: 'readonly',
+        MouseEvent: 'readonly',
+        setTimeout: 'readonly',
+        clearTimeout: 'readonly',
+        // 필요 시 추가 가능
+      },
     },
     plugins: {
       '@typescript-eslint': typescript,
