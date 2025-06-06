@@ -1,2 +1,3 @@
-export { Test } from './components/Test/Test';
-export { Button } from './components/Button/Button';
+import './styles/globals.css';
+
+export * from './components';
