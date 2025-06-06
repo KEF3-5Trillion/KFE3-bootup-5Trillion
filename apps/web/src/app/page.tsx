@@ -1,6 +1,6 @@
 'use client';
 
-import { Test } from '@ui/Test/Test';
+import { Test } from '@ui/components/Test/Test';
 
 export default function Page() {
   return (
