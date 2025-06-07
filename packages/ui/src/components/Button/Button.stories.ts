@@ -1,54 +1,111 @@
-import type { Meta, StoryObj } from '@storybook/react-vite';
+import type { Meta, StoryObj } from '@storybook/react';
+import Button from './Button';
 
-import { fn } from 'storybook/test';
-
-import { default as Button } from './Button';
-
-// More on how to set up stories at: https://storybook.js.org/docs/writing-stories#default-export
-const meta = {
+const meta: Meta<typeof Button> = {
   title: 'Components/Button',
   component: Button,
   parameters: {
-    // Optional parameter to center the component in the Canvas. More info: https://storybook.js.org/docs/configure/story-layout
     layout: 'centered',
+    docs: {
+      description: {
+        component:
+          '공통 버튼 컴포넌트입니다. `style`, `size`, `width`, `isDisabled`, `className` 등을 조합하여 다양한 버튼 UI를 구성할 수 있습니다.',
+      },
+    },
   },
-  // This component will have an automatically generated Autodocs entry: https://storybook.js.org/docs/writing-docs/autodocs
   tags: ['autodocs'],
-  // More on argTypes: https://storybook.js.org/docs/api/argtypes
   argTypes: {
-    backgroundColor: { control: 'color' },
+    style: {
+      control: 'select',
+      options: ['primary', 'secondary', 'success', 'danger'],
+      description: '버튼 스타일',
+      table: {
+        type: { summary: 'primary | secondary | success | danger' },
+        defaultValue: { summary: 'primary' },
+      },
+    },
+    size: {
+      control: 'radio',
+      options: ['sm', 'md', 'lg'],
+      description: '버튼 크기 (높이 고정)',
+      table: {
+        type: { summary: 'sm | md | lg' },
+        defaultValue: { summary: 'md' },
+      },
+    },
+    width: {
+      control: 'text',
+      description: '버튼 너비 (예: "100px", "100%")',
+      table: {
+        type: { summary: 'string' },
+        defaultValue: { summary: 'auto' },
+      },
+    },
+    isDisabled: {
+      control: 'boolean',
+      description: '버튼 비활성화 여부',
+      table: {
+        type: { summary: 'boolean' },
+        defaultValue: { summary: 'false' },
+      },
+    },
+    onClick: {
+      action: 'clicked',
+      description: '클릭 이벤트 핸들러',
+      table: {
+        type: { summary: '() => void' },
+      },
+    },
+    label: {
+      control: 'text',
+      description: '버튼에 표시할 텍스트',
+      table: {
+        type: { summary: 'string' },
+      },
+    },
   },
-  // Use `fn` to spy on the onClick arg, which will appear in the actions panel once invoked: https://storybook.js.org/docs/essentials/actions#action-args
-  args: { onClick: fn() },
-} satisfies Meta<typeof Button>;
+};
 
 export default meta;
-type Story = StoryObj<typeof meta>;
+type Story = StoryObj<typeof Button>;
 
-// More on writing stories with args: https://storybook.js.org/docs/writing-stories/args
 export const Primary: Story = {
   args: {
-    primary: true,
-    label: 'Button',
+    style: 'primary',
+    size: 'md',
+    label: 'Primary Button',
   },
 };
 
 export const Secondary: Story = {
   args: {
-    label: 'Button',
+    style: 'secondary',
+    size: 'md',
+    label: 'Secondary Button',
   },
 };
 
-export const Large: Story = {
+export const Success: Story = {
   args: {
-    size: 'large',
-    label: 'Button',
+    style: 'success',
+    size: 'md',
+    label: 'Success Button',
   },
 };
 
-export const Small: Story = {
+export const Danger: Story = {
   args: {
-    size: 'small',
-    label: 'Button',
+    style: 'danger',
+    size: 'md',
+    label: 'Danger Button',
+  },
+};
+
+export const Disabled: Story = {
+  args: {
+    style: 'primary',
+    size: 'md',
+    label: 'Disabled Button',
+    isDisabled: true,
   },
 };
