@@ -4,21 +4,13 @@ import React, { useEffect, useRef, useState, useCallback } from 'react';
 import { createPortal } from 'react-dom';
 
 export interface BottomSheetProps {
-  /** 바텀시트 표시 여부 */
   isOpen: boolean;
-  /** 바텀시트 닫기 콜백 */
   onClose: () => void;
-  /** 바텀시트 내용 */
   children: React.ReactNode;
-  /** 바텀시트 높이 (기본값: auto) */
   height?: string | number;
-  /** 배경 클릭으로 닫기 기능 사용 여부 */
   enableBackdropClose?: boolean;
-  /** 커스텀 클래스명 */
   className?: string;
-  /** 헤더 표시 여부 */
   showHeader?: boolean;
-  /** 제목 */
   title?: string;
 }
 
@@ -42,13 +34,13 @@ export const BottomSheet: React.FC<BottomSheetProps> = ({
   useEffect(() => {
     if (isOpen) {
       setIsVisible(true);
-      setDragY(0); // 바텀시트가 열릴 때 dragY 초기화
+      setDragY(0);
       document.body.style.overflow = 'hidden';
     } else {
       document.body.style.overflow = 'unset';
       const timer = setTimeout(() => {
         setIsVisible(false);
-        setDragY(0); // 바텀시트가 완전히 닫힌 후 dragY 초기화
+        setDragY(0);
       }, 300);
       return () => clearTimeout(timer);
     }
@@ -75,9 +67,7 @@ export const BottomSheet: React.FC<BottomSheetProps> = ({
     }
   }, [isDragging, dragY, onClose]);
 
-  // 마우스 드래그 시작
   const handleMouseDown = useCallback((e: React.MouseEvent) => {
-    // 버튼 클릭인지 확인
     if ((e.target as HTMLElement).closest('button')) return;
 
     e.preventDefault();
@@ -86,7 +76,6 @@ export const BottomSheet: React.FC<BottomSheetProps> = ({
     setDragY(0);
   }, []);
 
-  // 터치 드래그 시작
   const handleTouchStart = useCallback((e: React.TouchEvent) => {
     setIsDragging(true);
     startYRef.current = e.touches[0].clientY;
@@ -108,7 +97,6 @@ export const BottomSheet: React.FC<BottomSheetProps> = ({
     handleDragEnd();
   }, [handleDragEnd]);
 
-  // 전역 마우스 이벤트
   useEffect(() => {
     if (!isDragging) return;
 
@@ -153,7 +141,6 @@ export const BottomSheet: React.FC<BottomSheetProps> = ({
         onTouchMove={handleTouchMove}
         onTouchEnd={handleTouchEnd}
       >
-        {/* 헤더 - 드래그 가능 */}
         {showHeader && (
           <div
             className="flex cursor-grab items-center justify-between rounded-t-3xl px-6 py-8 select-none active:cursor-grabbing"
@@ -168,7 +155,6 @@ export const BottomSheet: React.FC<BottomSheetProps> = ({
           </div>
         )}
 
-        {/* 컨텐츠 */}
         <div
           className={`flex flex-1 flex-col ${showHeader ? 'pt-0' : 'pt-8'} overflow-hidden`}
         >

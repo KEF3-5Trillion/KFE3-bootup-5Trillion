@@ -24,7 +24,6 @@ export default [
         MouseEvent: 'readonly',
         setTimeout: 'readonly',
         clearTimeout: 'readonly',
-        // 필요 시 추가 가능
       },
     },
     plugins: {
