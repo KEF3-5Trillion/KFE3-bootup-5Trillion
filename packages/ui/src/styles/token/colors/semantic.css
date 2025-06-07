@@ -19,6 +19,7 @@
   --color-bg-secondary: var(--color-secondary-500);
   --color-bg-success: var(--color-success-500);
   --color-bg-danger: var(--color-danger-900);
+  --color-bg-neutral: var(--color-neutral-40);
   --color-bg-disabled: var(--color-neutral-60);
   --color-bg-light: var(--color-neutral-10);
   --color-bg-error: var(--color-error-50);
@@ -50,6 +51,7 @@
   --color-bg-secondary: var(--color-bg-secondary);
   --color-bg-success: var(--color-bg-success);
   --color-bg-danger: var(--color-bg-danger);
+  --color-bg-neutral: var(--color-bg-neutral);
   --color-bg-disabled: var(--color-bg-disabled);
   --color-bg-error: var(--color-bg-error);
 
