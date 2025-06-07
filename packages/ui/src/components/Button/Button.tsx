@@ -1,7 +1,7 @@
 import { cn } from '../../lib/utils';
 
 export interface ButtonProps {
-  style?: 'primary' | 'secondary' | 'success' | 'danger';
+  style?: 'primary' | 'secondary' | 'success' | 'danger' | 'neutral';
   size?: 'sm' | 'md' | 'lg';
   width?: string;
   label: string;
@@ -25,11 +25,15 @@ const Button = ({
     lg: 'h-[52px]',
   };
 
-  const styleClass: Record<string, string> = {
+  const styleClass: Record<
+    'primary' | 'secondary' | 'success' | 'danger' | 'neutral',
+    string
+  > = {
     primary: 'bg-[var(--color-primary-500)] text-[var(--color-neutral-10)]',
-    secondary: 'bg-[var(--color-neutral-20)] text-[var(--color-text-base)]',
+    secondary: 'bg-[var(--color-secondary-500)] text-[var(--color-neutral-10)]',
     success: 'bg-[var(--color-success-500)] text-[var(--color-neutral-10)]',
     danger: 'bg-[var(--color-danger-500)] text-[var(--color-neutral-10)]',
+    neutral: 'bg-[var(--color-neutral-40)] text-[var(--color-neutral-10)]',
   };
 
   const disabledEffects = 'opacity-50 cursor-not-allowed pointer-events-none';

@@ -17,10 +17,10 @@ const meta: Meta<typeof Button> = {
   argTypes: {
     style: {
       control: 'select',
-      options: ['primary', 'secondary', 'success', 'danger'],
+      options: ['primary', 'secondary', 'success', 'danger', 'neutral'],
       description: '버튼 스타일',
       table: {
-        type: { summary: 'primary | secondary | success | danger' },
+        type: { summary: 'primary | secondary | success | danger | neutral' },
         defaultValue: { summary: 'primary' },
       },
     },
@@ -98,6 +98,14 @@ export const Danger: Story = {
     style: 'danger',
     size: 'md',
     label: 'Danger Button',
+  },
+};
+
+export const Neutral: Story = {
+  args: {
+    style: 'neutral',
+    size: 'md',
+    label: 'Neutral Button',
   },
 };
 
