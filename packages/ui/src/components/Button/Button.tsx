@@ -29,11 +29,11 @@ const Button = ({
     'primary' | 'secondary' | 'success' | 'danger' | 'neutral',
     string
   > = {
-    primary: 'bg-[var(--color-primary-500)] text-[var(--color-neutral-10)]',
-    secondary: 'bg-[var(--color-secondary-500)] text-[var(--color-neutral-10)]',
-    success: 'bg-[var(--color-success-500)] text-[var(--color-neutral-10)]',
-    danger: 'bg-[var(--color-danger-500)] text-[var(--color-neutral-10)]',
-    neutral: 'bg-[var(--color-neutral-40)] text-[var(--color-neutral-10)]',
+    primary: 'bg-bg-primary text-text-inverse',
+    secondary: 'bg-bg-secondary text-text-inverse',
+    success: 'bg-bg-success text-text-inverse',
+    danger: 'bg-bg-danger text-text-inverse',
+    neutral: 'bg-bg-neutral text-text-inverse',
   };
 
   const disabledEffects = 'opacity-50 cursor-not-allowed pointer-events-none';
