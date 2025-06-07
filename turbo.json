@@ -29,6 +29,11 @@
     },
     "build-storybook": {
       "outputs": [".storybook-static/**"]
+    },
+    "chromatic": {
+      "dependsOn": ["build-storybook"],
+      "cache": false,
+      "env": ["CHROMATIC_PROJECT_TOKEN"]
     }
   }
 }

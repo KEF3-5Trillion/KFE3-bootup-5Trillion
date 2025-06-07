@@ -1,0 +1,77 @@
+name: Chromatic Deployment
+
+on:
+  # PR이 생성되거나 업데이트될 때
+  pull_request:
+    branches: [main, develop]
+    paths:
+      - 'packages/ui/**'
+  
+  # main 브랜치에 push될 때
+  push:
+    branches: [main]
+    paths:
+      - 'packages/ui/**'
+
+jobs:
+  chromatic-deployment:
+    runs-on: ubuntu-latest
+    
+    steps:
+      # 1. 코드 체크아웃
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0 # Chromatic이 변경사항을 추적하기 위해 전체 히스토리 필요
+      
+      # 2. Node.js 설정
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          
+      # 3. pnpm 설정
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: latest
+          
+      # 4. 의존성 캐싱
+      - name: Get pnpm store directory
+        shell: bash
+        run: |
+          echo "STORE_PATH=$(pnpm store path --silent)" >> $GITHUB_ENV
+          
+      - name: Setup pnpm cache
+        uses: actions/cache@v4
+        with:
+          path: ${{ env.STORE_PATH }}
+          key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
+          restore-keys: |
+            ${{ runner.os }}-pnpm-store-
+            
+      # 5. 의존성 설치
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+        
+      # 6. UI 패키지 빌드 (필요한 경우)
+      - name: Build UI package
+        run: pnpm --filter ui build
+        
+      # 7. Storybook 빌드 및 Chromatic 배포
+      - name: Publish to Chromatic
+        uses: chromaui/action@latest
+        with:
+          projectToken: ${{ secrets.CHROMATIC_PROJECT_TOKEN }}
+          buildScriptName: build-storybook
+          # 작업 디렉토리를 UI 패키지로 설정
+          workingDir: packages/ui
+          # PR에서만 UI 테스트 실행
+          onlyChanged: true
+          # 외부 의존성 처리
+          externals: |
+            - "../../node_modules/**"
+          # 자동 승인 설정 (main 브랜치의 경우)
+          autoAcceptChanges: ${{ github.ref == 'refs/heads/main' }}
+          # 종료 코드 설정 (변경사항이 있어도 실패하지 않음)
+          exitOnceUploaded: true

@@ -12,7 +12,8 @@
     "build-storybook": "storybook build",
     "lint": "eslint . --ext .ts,.tsx --fix",
     "lint:fix": "eslint . --ext .ts,.tsx --fix",
-    "typecheck": "tsc --noEmit"
+    "typecheck": "tsc --noEmit",
+    "chromatic": "chromatic --project-token=$CHROMATIC_PROJECT_TOKEN"
   },
   "keywords": [],
   "author": "",
@@ -24,6 +25,7 @@
     "@storybook/react-vite": "^9.0.4",
     "@types/react": "^19",
     "autoprefixer": "^10.4.21",
+    "chromatic": "^12.1.1",
     "postcss": "^8.5.4",
     "storybook": "^9.0.4",
     "tailwindcss": "^4.1.8",
