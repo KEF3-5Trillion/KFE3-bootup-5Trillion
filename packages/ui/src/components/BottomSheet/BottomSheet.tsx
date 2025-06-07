@@ -132,7 +132,7 @@ export const BottomSheet: React.FC<BottomSheetProps> = ({
     >
       <div
         ref={sheetRef}
-        className={`fixed right-0 bottom-0 left-0 mx-0 flex w-full max-w-none flex-col rounded-t-3xl bg-white shadow-2xl transition-transform duration-300 ease-out ${isOpen ? 'translate-y-0' : 'translate-y-full'} ${isDragging ? '' : 'transition-transform duration-300 ease-out'} ${className} `}
+        className={`fixed right-0 bottom-0 left-0 mx-0 flex w-full max-w-none flex-col rounded-t-3xl bg-white shadow-2xl ${isOpen ? 'translate-y-0' : 'translate-y-full'} ${isDragging ? '' : 'transition-transform duration-300 ease-out'} ${className} `}
         style={{
           height: sheetHeight,
           transform: `translateY(${dragY}px)`,
