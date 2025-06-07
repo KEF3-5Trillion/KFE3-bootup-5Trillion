@@ -1,6 +1,6 @@
 import UserIcon from '@ui/icons/UserIcon';
 import type { Meta, StoryObj } from '@storybook/react';
-import { Input } from './Input';
+import Input from './Input';
 
 const meta: Meta<typeof Input> = {
   title: 'Components/Input',
@@ -43,10 +43,10 @@ export const PasswordType: Story = {
   },
 };
 
-export const error: Story = {
+export const Error: Story = {
   args: {
     type: 'password',
-    color: 'danger',
+    color: 'error',
   },
 };
 

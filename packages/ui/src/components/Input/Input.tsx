@@ -1,10 +1,11 @@
-import { useState } from 'react';
+import React, { useState } from 'react';
+import clsx from 'clsx';
 import EyeIcon from '@ui/icons/EyeIcon';
 import EyeOffIcon from '@ui/icons/EyeOffIcon';
 import LockIcon from '@ui/icons/LockIcon';
 
 export type InputType = 'text' | 'password' | 'number';
-export type InputColor = 'default' | 'danger';
+export type InputColor = 'default' | 'error';
 
 export interface InputProps {
   id?: string;
@@ -20,10 +21,9 @@ export interface InputProps {
   autoComplete?: string;
   maxLength?: number;
   color?: InputColor;
-  onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
-export const Input: React.FC<InputProps> = ({
+const Input = ({
   label,
   disabled = false,
   className = '',
@@ -32,7 +32,7 @@ export const Input: React.FC<InputProps> = ({
   unit,
   color = 'default',
   ...props
-}) => {
+}: InputProps) => {
   const [showPassword, setShowPassword] = useState(false);
 
   const isPassword = type === 'password';
@@ -41,56 +41,74 @@ export const Input: React.FC<InputProps> = ({
 
   const inputColor: Record<InputColor, string> = {
     default: 'border-border-base text-text-base',
-    danger: 'border-pink-600 text-pink-600 bg-pink-50 focus:ring-border-danger',
+    error: 'border-border-error text-text-error bg-bg-error',
   };
 
-  const inputClassName = [
+  const inputClassName = clsx(
     'w-full p-2 px-5 rounded-[30px] text-sm outline-none transition focus:ring-1 border',
-    hasIcon && 'pl-10',
-    isPassword && 'pr-10',
-    disabled && 'bg-gray-100 cursor-not-allowed text-gray-500',
+    {
+      'padding-padding-md': hasIcon,
+      'pr-10': isPassword,
+      'bg-bg-light cursor-not-allowed text-text-info': disabled,
+    },
     inputColor[color],
-  ]
-    .filter(Boolean)
-    .join(' ');
+  );
 
   return (
-    <div className={`flex flex-col gap-1 ${className}`}>
+    <div className={clsx('flex flex-col gap-1', className)}>
       {label && (
-        <label htmlFor={props.id} className="text-sm font-bold text-text-base">
+        <label htmlFor={props.id} className="text-text-base text-sm font-bold">
           {label}
         </label>
       )}
 
       <div className="flex items-center gap-2">
-        {/* input + 내부 아이콘 */}
         <div className="relative w-full">
           {hasIcon && (
             <span
-              className={`absolute top-1/2 -translate-y-1/2 left-3 flex items-center ${inputColor[color]}`}
+              className={clsx(
+                'absolute top-1/2 left-3 flex -translate-y-1/2 items-center',
+                inputColor[color],
+              )}
             >
               {icon ?? <LockIcon />}
             </span>
           )}
 
-          <input type={inputType} disabled={disabled} className={inputClassName} {...props} />
+          <input
+            type={inputType}
+            disabled={disabled}
+            className={inputClassName}
+            {...props}
+          />
 
           {isPassword && (
             <button
               type="button"
-              onClick={() => setShowPassword((prev) => !prev)}
-              className={`absolute top-1/2 -translate-y-1/2 right-3 flex items-center ${inputColor[color]} hover:opacity-80`}
+              onClick={() => setShowPassword(prev => !prev)}
+              className={clsx(
+                'absolute top-1/2 right-3 flex -translate-y-1/2 items-center hover:opacity-80',
+                inputColor[color],
+              )}
             >
               {showPassword ? <EyeIcon /> : <EyeOffIcon />}
             </button>
           )}
         </div>
 
-        {/* 단위는 input 외부에 표시 */}
         {unit && (
-          <span className={`text-sm whitespace-nowrap self-end ${inputColor[color]}`}>{unit}</span>
+          <span
+            className={clsx(
+              'self-end text-sm whitespace-nowrap',
+              inputColor[color],
+            )}
+          >
+            {unit}
+          </span>
         )}
       </div>
     </div>
   );
 };
+
+export default Input;
