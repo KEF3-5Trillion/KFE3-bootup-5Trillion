@@ -12,6 +12,7 @@
   --color-text-success: var(--color-success-600);
   --color-text-danger: var(--color-danger-900);
   --color-text-disabled: var(--color-neutral-40);
+  --color-text-error: var(--color-red-600);
 
   /* Background Colors */
   --color-bg-primary: var(--color-primary-500);
@@ -21,6 +22,7 @@
   --color-bg-neutral: var(--color-neutral-40);
   --color-bg-disabled: var(--color-neutral-60);
   --color-bg-light: var(--color-neutral-10);
+  --color-bg-error: var(--color-error-50);
 
   /* Border Colors */
   --color-border-base: var(--color-neutral-40); /* 기본 테두리 색상 */
@@ -29,6 +31,7 @@
   --color-border-success: var(--color-success-500);
   --color-border-danger: var(--color-danger-900);
   --color-border-form: var(--color-neutral-40);
+  --color-border-errer: var(--color-border-error);
 }
 
 @theme {
@@ -41,6 +44,7 @@
   --color-text-success: var(--color-text-success);
   --color-text-danger: var(--color-text-danger);
   --color-text-disabled: var(--color-text-disabled);
+  --color-text-error: var(--color-text-error);
 
   /* Background Colors */
   --color-bg-primary: var(--color-bg-primary);
@@ -49,6 +53,7 @@
   --color-bg-danger: var(--color-bg-danger);
   --color-bg-neutral: var(--color-bg-neutral);
   --color-bg-disabled: var(--color-bg-disabled);
+  --color-bg-error: var(--color-bg-error);
 
   /* Border Colors */
   --color-border-base: var(--color-border-base);
@@ -57,4 +62,5 @@
   --color-border-success: var(--color-border-success);
   --color-border-danger: var(--color-border-danger);
   --color-border-form: var(--color-border-form);
+  --color-border-error: var(--color-border-error);
 }

@@ -56,4 +56,8 @@
   --color-base-70: #656565;
   --color-base-80: #444444;
   --color-base-100: #1f1f1f;
+
+  /** Error Colors **/
+  --color-red-50: #feecf4;
+  --color-red-600: #da3987;
 }
