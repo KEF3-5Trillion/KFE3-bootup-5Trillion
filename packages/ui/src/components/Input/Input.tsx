@@ -47,7 +47,7 @@ const Input = ({
   const inputClassName = clsx(
     'w-full p-2 px-5 rounded-[30px] text-sm outline-none transition focus:ring-1 border',
     {
-      'padding-padding-md': hasIcon,
+      'pl-10': hasIcon,
       'pr-10': isPassword,
       'bg-bg-light cursor-not-allowed text-text-info': disabled,
     },
