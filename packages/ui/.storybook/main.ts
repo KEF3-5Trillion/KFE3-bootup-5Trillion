@@ -12,8 +12,8 @@ const config: StorybookConfig = {
     config.plugins = [...(config.plugins || []), tsconfigPaths()];
     config.css = {
       postcss: {
-        plugins: [
-          require('@tailwindcss/postcss'), // 루트 레벨에서 Tailwind CSS를 사용하기 위한 설정
+       plugins: [
+          (await import('@tailwindcss/postcss')).default(),
         ],
       },
     };

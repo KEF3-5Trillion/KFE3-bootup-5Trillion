@@ -2,7 +2,6 @@
 const config = {
   content: [
     "./src/**/*.{js,ts,jsx,tsx,mdx,css}",
-    "../../packages/ui/src/**/*.{js,ts,jsx,tsx,css}",
   ],
 };
 
